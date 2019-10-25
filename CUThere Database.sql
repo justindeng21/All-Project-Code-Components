@@ -32,7 +32,7 @@ select * from eventDetails
 
 create table if not exists `CUThere`.`locations`(
 		`buildingID` INT NOT NULL,
-		`buildingName` VARCHAR(30) NOT NULL,
+		`buildingName` VARCHAR(100) NOT NULL,
         `roomNumber` INT NOT NULL,
         `buildingNameAbbv` VARCHAR(4) NOT NULL,
         PRIMARY KEY (`buildingID`)

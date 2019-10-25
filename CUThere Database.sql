@@ -31,10 +31,18 @@ VALUES (12345, 'Meeting4', '2019-10-17', '18:00:00', '20:00:00', 'Meeting 4 of M
 select * from eventDetails
 
 create table if not exists `CUThere`.`locations`(
-		`buildingID` INT NOT NULL,
-		`buildingName` VARCHAR(100) NOT NULL,
-        `roomNumber` INT NOT NULL,
-        `buildingNameAbbv` VARCHAR(4) NOT NULL,
-        PRIMARY KEY (`buildingID`)
-        )
-        ENGINE = InnoDB;
+    `buildingID` INT NOT NULL,
+    `buildingName` VARCHAR(100) NOT NULL,
+    `roomNumber` INT NOT NULL,
+    `buildingNameAbbv` VARCHAR(4) NOT NULL,
+    PRIMARY KEY (`buildingID`)
+)
+ENGINE = InnoDB;
+	   
+INSERT INTO locations (buildingID, buildingName, roomNumber, buildingNameAbbv)
+VALUES
+(1, 'Center for Community', 100, 'C4C'),
+(2, 'University Memorial Center', 100, 'UMC'),
+(3, 'Engineering Center', 100, 'ECCR'),
+(4, 'Koelbel Building', 100, 'KOBL'),
+(5, 'Eaton Humanities', 100, 'HUMN'); -- Testing values

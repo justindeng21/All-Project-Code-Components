@@ -1,8 +1,8 @@
-create database if not exists CUThere;
+create database if not exists CUThere; -- Main database
 
 use CUThere;
 
-CREATE  TABLE IF NOT EXISTS `CUThere`.`eventDetails` (
+CREATE  TABLE IF NOT EXISTS `CUThere`.`eventDetails` ( -- eventDetails table
   `eventID` INT NOT NULL	,
   `eventName` VARCHAR(50) NOT NULL ,
   `dateOfEvent` DATE NOT NULL,
@@ -15,7 +15,7 @@ CREATE  TABLE IF NOT EXISTS `CUThere`.`eventDetails` (
   PRIMARY KEY (`eventID`))
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `CUThere`.`organizers`(
+CREATE TABLE IF NOT EXISTS `CUThere`.`organizers`( -- organizers table
 	`organizerID` INT NOT NULL,
     `organizeName` VARCHAR(50) NOT NULL,
     `publicEmail` VARCHAR(100),
@@ -26,11 +26,11 @@ CREATE TABLE IF NOT EXISTS `CUThere`.`organizers`(
 ENGINE = InnoDB;
 
 INSERT INTO eventDetails (eventID, eventName, dateOfEvent, timeStart, timeEnd, eventDescription,organizerID, location, rsvp)
-VALUES (12345, 'Meeting4', '2019-10-17', '18:00:00', '20:00:00', 'Meeting 4 of Murphys Law', 54321, 'ITLL', TRUE);
+VALUES (12345, 'Meeting4', '2019-10-17', '18:00:00', '20:00:00', 'Meeting 4 of Murphys Law', 54321, 'ITLL', TRUE); -- Testing values
 
 select * from eventDetails;
 
-create table if not exists `CUThere`.`locations`(
+create table if not exists `CUThere`.`locations`( -- locations table
     `buildingID` INT NOT NULL,
     `buildingName` VARCHAR(100) NOT NULL,
     `roomNumber` INT NOT NULL,

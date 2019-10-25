@@ -1,5 +1,6 @@
 create database if not exists CUThere;
 
+use CUThere;
 
 CREATE  TABLE IF NOT EXISTS `CUThere`.`eventDetails` (
   `eventID` INT NOT NULL	,
@@ -29,3 +30,11 @@ VALUES (12345, 'Meeting4', '2019-10-17', '18:00:00', '20:00:00', 'Meeting 4 of M
 
 select * from eventDetails
 
+create table if not exists `CUThere`.`locations`(
+		`buildingID` INT NOT NULL,
+		`buildingName` VARCHAR(30) NOT NULL,
+        `roomNumber` INT NOT NULL,
+        `buildingNameAbbv` VARCHAR(4) NOT NULL,
+        PRIMARY KEY (`buildingID`)
+        )
+        ENGINE = InnoDB;

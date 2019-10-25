@@ -28,7 +28,7 @@ ENGINE = InnoDB;
 INSERT INTO eventDetails (eventID, eventName, dateOfEvent, timeStart, timeEnd, eventDescription,organizerID, location, rsvp)
 VALUES (12345, 'Meeting4', '2019-10-17', '18:00:00', '20:00:00', 'Meeting 4 of Murphys Law', 54321, 'ITLL', TRUE);
 
-select * from eventDetails
+select * from eventDetails;
 
 create table if not exists `CUThere`.`locations`(
     `buildingID` INT NOT NULL,

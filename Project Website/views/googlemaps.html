@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <title>Evenets Map </title>
+    <style>
+      #map{
+        height:100%;
+        width:100%;
+      }
+      html, body{
+        height:100%;
+        margin:0;
+        padding:0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Events</h1>
+    <div id="map"></div>
+    <script>
+      var CU_Boulder_Bounds = {
+        north: 40.020,
+        south: 39.999,
+        west: -105.320,
+        east:  -105.210,
+      };
+      var event1 = '<div id="content">'+
+                  '<div id="event1Notice">'+
+                  '</div>'+
+                  '<h1 id="firstHeading" class="firstHeading">Event1</h1>'+
+                  '<div id="bodyContent">'+
+                  '<p> Event 1 is ...</p>'+
+                  '</div>'+
+                  '</div>';
+      var boulder = {lat:40.015,lng:-105.270};
+      var map;
+      function initMap(){
+        var options={
+          zoom:13,
+          center:boulder,
+          restriction: {
+          latLngBounds: CU_Boulder_Bounds,
+          strictBounds: false,
+          },
+        }
+       map = new google.maps.Map(document.getElementById('map'),options);
+       var infowindow = new google.maps.InfoWindow({content: event1
+       });
+       var marker = new google.maps.Marker({
+         position: boulder,
+         map : map,
+         title : 'Event1'
+       });
+       marker.addListener('click', function(){
+         infowindow.open(map,marker);
+       });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLX8GxL_S3NmXNLcQdXtcvTkhjmeBhivk&callback=initMap"
+    async defer>
+    </script>
+
+  </body>
+</html>

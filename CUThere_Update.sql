@@ -18,8 +18,10 @@ CREATE  TABLE IF NOT EXISTS `CUThere`.`eventDetails` (
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `CUThere`.`organizers`(
-	`organizerID` INT NOT NULL,
-    `organizeName` VARCHAR(50) NOT NULL,
+    `organizerID` INT NOT NULL,
+    `organizerName` VARCHAR(50) NOT NULL,
+    `organizerUserName` VARCHAR(50) NOT NULL,
+    `organizerPassword` VARCHAR(50) NOT NULL,
     `publicEmail` VARCHAR(100),
     `publicPhone` VARCHAR(13),
     `pictureLink` VARCHAR(150),
@@ -40,17 +42,6 @@ create table if not exists `CUThere`.`locations`(
         )
         ENGINE = InnoDB;
         
-create table if not exists `CUThere`.`users`(
-    `userID` INT NOT NULL,
-    `userName` VARCHAR(35) NOT NULL,
-    `password` VARCHAR(16) NOT NULL,
-    `email` VARCHAR(50) NOT NULL,
-    `DOB` DATE NOT NULL,
-    `firstName` VARCHAR(10) NOT NULL,
-    `lastName` VARCHAR(10) NOT NULL,
-    PRIMARY KEY (`userID`)
-	)
-ENGINE = InnoDB;
 	
 INSERT INTO locations (buildingID, buildingName, roomNumber, buildingNameAbbv)
 VALUES

@@ -1,0 +1,59 @@
+
+/* Color Theme Swatches in RGBA */
+.CU-Boulder-Branding-1-rgba { color: rgba(207, 184, 124, 1); } /* gold */
+.CU-Boulder-Branding-2-rgba { color: rgba(0, 0, 0, 1); } /* black */
+.CU-Boulder-Branding-3-rgba { color: rgba(86, 89, 91, 1); } /* dark gray */
+.CU-Boulder-Branding-4-rgba { color: rgba(161, 163, 163, 1); } /* light gray */
+.CU-Boulder-Branding-5-rgba { color: rgba(255, 255, 255, 1); } /* white */
+
+
+
+
+.header {
+  padding: 30px;
+  text-align: center;
+  background: rgba(207, 184, 124, 1);
+  color: white;
+  font-size: 30px;
+}
+
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-column-gap: 10px;
+        grid-row-gap: 15px;
+}
+
+.grid {
+  background-color: #444;
+  color: #fff;
+  padding: 25px;
+  font-size: 3rem;
+}
+
+.centered {
+	text-align: center;
+}
+
+
+
+/* for grid of cards */
+.cards {
+  display: grid;
+  padding: 25px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: auto;
+  grid-gap: 1rem;
+}
+
+&nbsp;
+
+/* for each  individual card */
+.card {
+  border: 2px solid rgba(0, 0, 0, 1); /* Black */
+  border-radius: 4px;
+  padding: .5rem;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}

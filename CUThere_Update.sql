@@ -13,6 +13,7 @@ CREATE  TABLE IF NOT EXISTS `CUThere`.`eventDetails` (
   `organizerID` INT,
   `buildingID` INT NOT NULL,
   `roomNumber` VARCHAR(4) NOT NULL,
+  `imageLink` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`eventID`))
 ENGINE = InnoDB;
 

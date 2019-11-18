@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<!--CU There-->
+<html>
+	<head>
+		<title>CU There</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<!-- Popper JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		
+		
+		<style>
+            /*
+                removes google maps logo and copyright lmao
+            */
+            a[href^="http://maps.google.com/maps"]{display:none !important}
+            a[href^="https://maps.google.com/maps"]{display:none !important}
+
+            .gmnoprint a, .gmnoprint span, .gm-style-cc {
+                display:none;
+            }
+            .gmnoprint div {
+                background:none !important;
+            }
+
+            /*
+                sidenav-bar code
+            */
+			.sidenav {
+				height: 100%;
+				width: 0;
+				position: fixed;
+				z-index: 1;
+				top: 0;
+				left: 0;
+				background-color: black;
+				overflow-x: hidden;
+				transition: 0.5s;
+				padding-top: 60px;
+                opacity: .8;
+                border-radius: 0px 50px 50px 0px
+
+			}
+			
+			.sidenav a {
+				padding: 8px 8px 8px 32px;
+				text-decoration: none;
+				font-size: 25px;
+				color: #818181;
+				display: block;
+				transition: 0.3s;
+                
+			}
+			
+			.sidenav a:hover {
+				color: #f1f1f1;
+			}
+			.sidenav .closebtn {
+				position: absolute;
+				top: 0;
+				right: 25px;
+				font-size: 36px;
+				margin-left: 50px;
+			}
+			@media screen and (max-height: 450px) {
+				.sidenav {padding-top: 15px;}
+				.sidenav a {font-size: 18px;}
+			}
+			
+            /*
+             map code
+            */
+			#map{
+				height:100%;
+				width:100%;
+			}
+			
+			html, body {
+                width: 100%;
+                height: 100%;
+            }
+
+            /*
+                placees div on top of map
+            */
+            .wrapper {
+                position: relative;
+                width: 100%;
+                height: 100%;
+            }
+
+            #map {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: #eee;
+            }
+
+            .content {
+            position: absolute;
+            padding: 1px;
+            top: 25px;
+            left: 25px;
+            background: silver;
+            opacity: .4;
+            border-radius: 25px;
+            }
+            
+            .content-right {
+            position: absolute;
+            padding: 1px;
+            top: 25px;
+            right: 25px;
+            background: silver;
+            opacity: .4;
+            border-radius: 25px;
+            }
+            .content-main{
+            position: absolute;
+            padding: 4px;
+            top: 50px;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            opacity: .4;
+            border-radius: 25px;
+           
+            }
+            
+            
+    
+            
+
+            
+		</style>
+	
+    </head>
+    
+	<body>
+	<div id="mySidenav" class="sidenav">
+		  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		  <a href="http://localhost:3000/home">Map</a>
+		  <a href="http://localhost:3000/events">Events</a>
+		  <a href="#">Search</a>
+		  <a href="http://localhost:3000/application#">Apply</a>
+	</div>
+
+
+			
+				
+    <div class="wrapper">
+        <div id="map"></div>
+        <div class="content">
+            <p class="my-2 col-2" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</p>
+        </div>
+        <div class="content-right">
+            <p class="my-2 col-2" style="text-align:right;font-size:30px;cursor:pointer" onclick="openFav()">&#9733;</p>
+        </div>
+        <div class="content-main"> <img src="cutherelogo.png"  alt="ll"> </div>
+      </div>
+     
+        
+  
+	
+	<script>
+	  var CU_Boulder_Bounds = {
+		north: 40.020,
+		south: 39.999,
+		west: -105.320,
+		east:  -105.210,
+	  };
+	  var event1 = '<div id="content">'+
+				  '<div id="event1Notice">'+
+				  '</div>'+
+				  '<h1 id="firstHeading" class="firstHeading">Event1</h1>'+
+				  '<div id="bodyContent">'+
+				  '<p> Event 1 is ...</p>'+
+				  '</div>'+
+				  '</div>';
+	  var boulder = {lat:40.006581,lng:-105.2659417};
+	  var map;
+	  function initMap(){
+
+	   map = new google.maps.Map(document.getElementById('map'),{
+			zoom:16,
+			center: boulder,
+			disableDefaultUI:true,
+			styles: [
+    {
+        "featureType": "all",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "saturation": 36
+            },
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 40
+            }
+        ]
+    },
+    {
+        "featureType": "all",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 16
+            }
+        ]
+    },
+    {
+        "featureType": "all",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 20
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 17
+            },
+            {
+                "weight": 1.2
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.country",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.province",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.locality",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.neighborhood",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.land_parcel",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 20
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.man_made",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.natural",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 21
+            }
+        ]
+    },
+    {
+        "featureType": "poi.school",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.school",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.school",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 17
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 29
+            },
+            {
+                "weight": 0.2
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 18
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 16
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 19
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#230d00"
+            },
+            {
+                "lightness": 17
+            },
+            {
+                "visibility": "off"
+            }
+        ]
+    }
+]
+	   });
+	   
+	  }
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLX8GxL_S3NmXNLcQdXtcvTkhjmeBhivk&callback=initMap"
+		async defer>
+	</script>
+	
+	
+	<!-- Script for side-navigation bar -->
+	<script>
+		function openNav() {
+		  document.getElementById("mySidenav").style.width = "250px";
+		}
+		function closeNav() {
+		  document.getElementById("mySidenav").style.width = "0";
+		}
+	</script>
+	
+		
+	</body>
+</html>

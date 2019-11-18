@@ -1,10 +1,11 @@
-const express = require('express'); // Add the express framework has been added
+
+//server stuff
+const express = require('express');
+const bodyParser = require('body-parser');
 let app = express();
-
-const bodyParser = require('body-parser'); // Add the body-parser tool has been added
-app.use(bodyParser.json());              // Add support for JSON encoded bodies
-app.use(bodyParser.urlencoded({ extended: true })); // Add support for URL encoded bodies
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+//
 
 ////////////////////////////////////////////////
 /*
@@ -21,46 +22,62 @@ var connection = mysql.createConnection({
 connection.connect()
 ////////////////////////////////////////////////
 
-
-function testDB()
-{
-	console.log('Testing Database connection')
-	connection.query('select * from eventDetails', function(err,rows, fields){
-	if(err) throw err
-
-	console.log(rows[0].dateOfEvent)
-})}
+app.use(express.static('public'))
 
 
-testDB()
-
-
-
-
+////////////////////////////////////////////////
+/*
+	request to home page
+*/
 app.get('/',function(req,res)
 {
-	res.sendFile(__dirname + '/index.html')
+	res.sendFile(__dirname + "/home.html")
 })
 
 app.get('/home',function(req,res)
 {
-	res.sendFile(__dirname + '/index.html')
+	res.sendFile(__dirname + '/home.html')
 	connection.query('select * from eventDetails', function(err,rows, fields){
-		if(err) throw err
+		if(err) 
+		throw err
 	
-		console.log(rows[0])
+		//console.log(rows[0])
 	})
 })
+////////////////////////////////////////////////
 
-app.get('/x',function(req,res)
-{
-	res.sendFile(__dirname + '/googlemaps.html')
-})
 
+
+////////////////////////////////////////////////
+/*
+	request to application
+*/
 app.get('/application',function(req,res)
 {
 	res.sendFile(__dirname + '/application.html')
 })
+
+
+app.post('/application/done',function(req, res){
+	const title = req.body.title
+	const building = req.body.building
+	const roomNumber = req.body.roomNumber
+	const month = req.body.month
+	const day = req.body.day
+	const hour = req.body.hour
+	const min = req.body.min
+	const timeOfDay = req.body.timeOfDay
+	console.log(title)
+	console.log(building)
+	console.log(roomNumber)
+	console.log(month)
+	console.log(day)
+	console.log(hour)
+	console.log(min)
+	console.log(timeOfDay)
+	res.end()
+})
+////////////////////////////////////////////////
 
 app.listen(3000)
 console.log('Server is being hosted on port 3000')

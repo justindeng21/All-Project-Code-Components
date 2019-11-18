@@ -12,7 +12,7 @@
 		<!-- Popper JS -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 		<!-- Latest compiled JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 		
 		<style>
 			.sidenav {
@@ -63,10 +63,9 @@
 	<body>
 	<div id="mySidenav" class="sidenav">
 		  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		  <a href="CUTHere_Home.html">Map</a>
+		  <a href="http://localhost:3000/home">Map</a>
 		  <a href="#">Events</a>
 		  <a href="#">Search</a>
-		  <a href="CUThere_Application.html">Apply for Event</a>
 	</div>
 	<div class="container" style="margin-top:30px">
 		<div class="row">
@@ -82,16 +81,16 @@
 	
 	<div class="container">
 		<h1 align="center">Add Event</h1>
-		<form>
+		<form method="POST" action="/application/done">
             <div class="form-group">
               <label for="input-article-title">Event Title</label>
-              <input type="event-title" class="form-control" id="eventTitle" aria-describedby="eventTitle" placeholder="Title">
+              <input type="eventtitle" class="form-control" id="eventTitle" aria-describedby="eventTitle" placeholder="Title" name = "title">
             </div>
             <div class ="form-row">
                 <div class="col">
                     <div class="form-group">
                             <label for="buildingSelection">Building</label>
-                            <select class="form-control" id="buildSelection">
+                            <select class="form-control" id="buildSelection" name = "building">
                                 <option>University Memorial Center</option>
                                 <option>Center For Community</option>
                                 <option>Engineering Center</option>
@@ -111,7 +110,7 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="input-article-title">Room Number</label>
-                        <input type="number" class="form-control" id="roomNumber" aria-describedby="roomNumber" placeholder="roomNumber">
+                        <input type="number" class="form-control" id="roomNumber" aria-describedby="roomNumber" placeholder="roomNumber" name=roomNumber>
                       </div>
                 </div>
             </div>
@@ -122,7 +121,7 @@
                 <div class="col">
                     <div class="form-group">
                             <label for="month">Months</label>
-                            <select class="form-control" id="month">
+                            <select class="form-control" id="month" name = "month">
                                 <option>January</option>
                                 <option>February</option>
                                 <option>March</option>
@@ -141,7 +140,7 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="day">Day</label>
-                        <select class="form-control" id="day">
+                        <select class="form-control" id="day" name="day">
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -181,7 +180,7 @@
             <div class="form-row">
                 <div class="col">
                     <label for="hourStart">Hour</label>
-                    <select class="form-control" id="hourStart">
+                    <select class="form-control" id="hourStart" name = "hour">
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -199,7 +198,7 @@
                 </div>
                 <div class="col">
                         <label for="minStart">Minutes</label>
-                        <select class="form-control" id="minStart">
+                        <select class="form-control" id="minStart" name ="min">
                             <option>00</option>
                             <option>15</option>
                             <option>30</option>
@@ -207,29 +206,27 @@
                          </select>
                 </div>
                 <div class="col">
-                        <label for="minStart">IDK what to name this</label>
-                        <select class="form-control" id="minStart">
+                        <label for="minStart">Time of day</label>
+                        <select class="form-control" id="timeOfDay" name="timeOfDay">
                             <option>AM</option>
                             <option>PM</option>                                              
                          </select>
                 </div>
             </div>
-	    <div class="form-row">
-		<div class="col">
-		    <div class="form-group">
-			<label for="input-article-title">Picture Link</label>
-			    <input type="picture-link" class="form-control" id="pictureLink" aria-describedby="pictureLink" placeholder="Picture Link e.g. 'https://www.cu.edu/sites/default/files/cu-standalone.png'">
-		    </div>
-		</div>
-	    </div>
             <br>
-            <hr>
+            
+            <div class="form-group">
+                <button id="my_submit_button" class="btn btn-primary btn-block login-btn">Sign Up</button>
+            </div>
+            <!--
             <div>
 				<br>
 				<label class="btn btn-warning btn-file">
 					Picture Upload <input type="file" style="display: none;">
 				</label>
-            </div>                
+            </div>
+            --> 
+               <!--            
             <div class="form-row">
                 <div class="col">
                         <label for="input-username">Username</label>
@@ -240,6 +237,7 @@
                         <input type="PasswordInput" class="form-control" id="Password" aria-describedby="Password" placeholder="Password">
                 </div>
             </div>
+        -->
         </form>
 	</div>
 	

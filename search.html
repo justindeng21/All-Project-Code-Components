@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--CU There-->
+<html>
+  <head>
+    <title>CU There</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      />
+    <!-- jQuery library -->
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="search.css" />
+  </head>
+  <body>
+    <div class="container" style="margin-top:30px">
+      <div class="row">
+        <div class="col-sm-12" style="text-align:center">
+          <h1>
+            CU There - <span style="color:grey;">CU Boulder Event Map</span>
+          </h1>
+        </div>
+      </div>
+      <div class="topnav">
+        <input
+          id="myInput"
+          type="text"
+          placeholder="Search.."
+          onkeyup="updateSearchResults()"
+          />
+      </div>
+      <ul id="myUL">
+      </ul>
+
+      <br />
+    </div>
+    <script src="search.js"></script>
+
+  </body>
+</html>

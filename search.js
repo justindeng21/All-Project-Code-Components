@@ -48,7 +48,7 @@ function toggleResult(r, open) {
     r.style.display = "";
     r.id = "open";
     let state = 0;
-    var id = setInterval(frame, 5);
+    var id = setInterval(frame, 1);
     function frame() {
       if (state >= 100) {
         clearInterval(id);
@@ -63,7 +63,7 @@ function toggleResult(r, open) {
   } else {
     r.id = "close";
     let state = 0;
-    var id = setInterval(frame, 5);
+    var id = setInterval(frame, 1);
     function frame() {
       if (state >= 100) {
         r.style.display = "none";

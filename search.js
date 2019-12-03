@@ -1,41 +1,30 @@
-let event = [
-  "Book Club",
-  "Fight Club",
-  "Free ice cream",
-  "Meeting for Catholics against seedless Watermelon",
-  "Meeting for Catholics for seedless Watermelon",
-  "Catholic civil war",
-  "Library of Alexander RP at Norlin",
-  "I really can't think of more events"
-];
+// function clearResult() {
+//   let ul = document.getElementById("myUL");
+//   $(ul).each(function(index) {
+//     ul.removeChild(this);
+//   });
+// }
 
-function clearResult() {
-  let ul = document.getElementById("myUL");
-  $(ul).each(function(index) {
-    ul.removeChild(this);
-  });
-}
-
-function constructSearch(event) {
-  clearResult();
-  console.log("Construct events database");
-  let ul = document.getElementById("myUL");
-  if (event.length() == 0) {
-    let a = document.getElementById("a");
-    a.innerHTML = "We couldn't retrieve the events database";
-    ul.appendChild(a);
-    return;
-  }
-  for (i = 0; i < event.length; i++) {
-    let li = document.createElement("li");
-    ul.appendChild(li);
-    let a = document.createElement("a");
-    a.classList.add("results");
-    a.innerHTML = event[i];
-    console.log(event[i]);
-    li.appendChild(a);
-  }
-}
+// function constructSearch(event) {
+//   clearResult();
+//   console.log("Construct events database");
+//   let ul = document.getElementById("myUL");
+//   if (event.length() == 0) {
+//     let a = document.getElementById("a");
+//     a.innerHTML = "We couldn't retrieve the events database";
+//     ul.appendChild(a);
+//     return;
+//   }
+//   for (i = 0; i < event.length; i++) {
+//     let li = document.createElement("li");
+//     ul.appendChild(li);
+//     let a = document.createElement("a");
+//     a.classList.add("results");
+//     a.innerHTML = event[i];
+//     console.log(event[i]);
+//     li.appendChild(a);
+//   }
+// }
 function toggleResult(r, open) {
   if (r.className != "results") {
     console.log(r.className + "Not Results class");

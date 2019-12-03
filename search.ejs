@@ -22,42 +22,51 @@
     <link rel="stylesheet" href="search.css" />
   </head>
   <body>
-<div class="container" style="margin-top:30px">
-  <div>
-      <h1><span style="color:grey;">CU Boulder Search Page</span></h1>
-  </div>
-  <div class="topnav rounded_edge">
-    <div> Filter
-    <input
-      id="myInput"
-      type="text"
-      placeholder="Search.."
-      onkeyup="updateSearchResults()"
-    />
-    </div>
-    <div class = "order"> Order by
-      <form action="\search", method="get">
-        <select class = "rounded_edge" name="order" id="order" onchange="this.form.submit()">
-          <option value="name">Name</option>
-          <option value="time">Time</option>
-        </select>
-      </form>
-    </div>
-  </div>
-  <% for (let i = 0;i<event.length;i++){ %>
+    <div class="container" style="margin-top:30px">
       <div>
-        <div class = "results"> <%= event[i].eventname %> -
-        <span style="color: rgb(145, 141, 141); font: 20px;"><%= event[i].eventdescription %>
-        </span>
-        <div> <%=event[i].dateofevent%>: From <%=event[i].timestart%> to <%=event[i].timeend%></div>
-        </div>
+        <h1><span style="color:grey;">CU Boulder Search Page</span></h1>
       </div>
-  <%}%>
+      <div class="topnav rounded_edge">
+        <div> Filter
+          <input
+            id="myInput"
+            type="text"
+            placeholder="Search.."
+            onkeyup="updateSearchResults()"
+            />
+        </div>
+        <div class="order"> Order by
+          <form action="\search" , method="get">
+            <select class="rounded_edge" name="order" id="order"
+              onchange="this.form.submit()">
+              <option value="name">Name</option>
+              <%if (order =="time" ){%>
+                <option value="time" selected>Time</option>
+                <%} else{%>
+                  <option value="time">Time</option>
 
-  <br />
-</div>
+                  <%}%>
+                  </select>
+                </form>
+              </div>
+            </div>
+            <% for (let i= 0;i<event.length;i++){ %>
+              <div>
+                <div class="results"> <%= event[i].eventname %> -
+                    <span style="color: rgb(145, 141, 141); font: 20px;"><%=
+                        event[i].eventdescription %>
+                      </span>
+                      <div> <%=event[i].dateofevent%>: From
+                          <%=event[i].timestart%>
+                            to <%=event[i].timeend%></div>
+                          </div>
+                        </div>
+                        <%}%>
 
-<script src="search.js"></script>
+                          <br />
+                        </div>
 
-</body>
-</html>
+                        <script src="search.js"></script>
+
+                      </body>
+                    </html>

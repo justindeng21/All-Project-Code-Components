@@ -21,10 +21,13 @@ app.use(express.static("public")); // This line is necessary for us to use relat
 app.get("/search", function(req, res) {
   console.log(req.query.order);
   let q = "";
+  let o = "";
   if (req.query.order == "name" || req.query.order == null) {
     q = "select * from eventDetails order by eventname";
+    o = "name";
   } else {
     q = "select * from eventDetails order by dateofevent,timestart";
+    o = "time";
   }
   db.task("get-everything", task => {
     return task.batch([task.any(q)]);
@@ -33,6 +36,7 @@ app.get("/search", function(req, res) {
       // console.log(events[0]);
       res.render("search", {
         event: events[0],
+        order: o,
         error: ""
       });
     })

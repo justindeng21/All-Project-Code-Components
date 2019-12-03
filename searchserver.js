@@ -31,6 +31,7 @@ app.get("/search", function(req, res) {
   })
     .then(function(events) {
       console.log(events[0]);
+      // console.log(events[0]);
       res.render("search", {
         event: events[0],
         error: ""

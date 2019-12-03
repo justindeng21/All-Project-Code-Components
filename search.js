@@ -45,7 +45,7 @@ function toggleResult(r, open) {
       } else {
         state++;
         r.style.width = state + "%";
-        r.style.height = 30 * (state / 100) + "px";
+        r.style.height = 60 * (state / 100) + "px";
       }
     }
     return;
@@ -61,7 +61,7 @@ function toggleResult(r, open) {
       } else {
         state++;
         r.style.width = 100 - state + "%";
-        r.style.height = 30 * (1 - state / 100) + "px";
+        r.style.height = 60 * (1 - state / 100) + "px";
       }
     }
     return;
@@ -79,10 +79,12 @@ function updateSearchResults(page) {
     match = txt.match(reg);
     if (match != null) {
       // console.log("open");
-      toggleResult(res[i], true);
+      // toggleResult(res[i], true);
+      res[i].style.display = "";
     } else {
       // console.log("close");
-      toggleResult(res[i], false);
+      // toggleResult(res[i], false);
+      res[i].style.display = "none";
     }
   }
 }

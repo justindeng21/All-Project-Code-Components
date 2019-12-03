@@ -30,7 +30,6 @@ app.get("/search", function(req, res) {
     return task.batch([task.any(q)]);
   })
     .then(function(events) {
-      console.log(events[0]);
       // console.log(events[0]);
       res.render("search", {
         event: events[0],

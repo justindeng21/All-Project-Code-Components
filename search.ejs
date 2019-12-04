@@ -27,7 +27,8 @@
         <h1><span style="color:grey;">CU Boulder Search Page</span></h1>
       </div>
       <div class="topnav rounded_edge">
-        <div> Filter
+        <div>
+          Filter
           <input
             id="myInput"
             type="text"
@@ -35,38 +36,103 @@
             onkeyup="updateSearchResults()"
             />
         </div>
-        <div class="order"> Order by
+        <div class="order">
+          Order by
           <form action="\search" , method="get">
-            <select class="rounded_edge" name="order" id="order"
+            <select
+              class="rounded_edge"
+              name="order"
+              id="order"
               onchange="this.form.submit()">
               <option value="name">Name</option>
               <%if (order =="time" ){%>
                 <option value="time" selected>Time</option>
                 <%} else{%>
                   <option value="time">Time</option>
-
                   <%}%>
                   </select>
                 </form>
               </div>
             </div>
-            <% for (let i= 0;i<event.length;i++){ %>
-              <div>
-                <div class="results"> <%= event[i].eventname %> -
-                    <span style="color: rgb(145, 141, 141); font: 20px;"><%=
-                        event[i].eventdescription %>
-                      </span>
-                      <div> <%=event[i].dateofevent%>: From
-                          <%=event[i].timestart%>
-                            to <%=event[i].timeend%></div>
-                          </div>
-                        </div>
-                        <%}%>
+            <script>
+        function revealmodal(thisEvent) {
+          document.getElementById("eventTitle").innerHTML = document.getElementById("name"+thisEvent).innerHTML
+          document.getElementById("eventDescription").innerHTML = document.getElementById("desc"+thisEvent).innerHTML
+          document.getElementById("date").innerHTML = document.getElementById("date"+thisEvent).innerHTML
+          document.getElementById("start").innerHTML = document.getElementById("star"+thisEvent).innerHTML
+          document.getElementById("stop").innerHTML = document.getElementById("stop"+thisEvent).innerHTML
 
-                          <br />
-                        </div>
+          $("#eventWindow").modal("show");
+        }
+        // const revealmodal = ({ dataset:{info}}) => {
+        //   console.log(info)
+        //   $("#eventWindow").modal("show");
+        // }
+      </script>
+            <div id="reshold">
+              <% for (var i=0;i <= event.length-1;i++) {%>
+                <div id="eventIDdiv" value=<%= i %> ></div>
+                <div class="results" style="cursor: pointer;" data-info= <%= i%>
+                  onclick="revealmodal(<%=i%>)"> <%= event[i].eventname %>
+                      <span style="color: rgb(145, 141, 141); font: 20px;"><%=event[i].eventdescription
+                          %></span>
+                        <div>
+                          <%=event[i].dateofevent%>: From
+                            <%=event[i].timestart%>
+                              to
+                              <%=event[i].timeend%>
+                              </div>
+                              <div style="display: none;">
+                                <div id="name<%=i%>"><%=event[i].eventname%></div>
+                                  <div id="desc<%=i%>"><%=event[i].eventdescription%></div>
+                                    <div id="date<%=i%>"><%=event[i].dateofevent%></div>
+                                      <div id="star<%=i%>"><%=event[i].timestart%></div>
+                                        <div id="stop<%=i%>"><%=event[i].timeend%></div>
+                                        </div>
+                                      </div>
 
-                        <script src="search.js"></script>
+                                      <% } %>
+                                      </div>
 
-                      </body>
-                    </html>
+                                      <br />
+                                    </div>
+                                    <script src="search.js"></script>
+                                    <div
+                                      class="modal fade"
+                                      id="eventWindow"
+                                      tabindex="-1"
+                                      role="dialog"
+                                      aria-labelledby="exampleModalLongTitle"
+                                      aria-hidden="true">
+                                      <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title"
+                                              id="eventTitle"></h5>
+                                            <button
+                                              type="button"
+                                              class="close"
+                                              data-dismiss="modal"
+                                              aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <p id="eventDescription"></p>
+                                            <p id="date"></p>
+                                            <p id="start"></p>
+                                            <p id="stop"></p>
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button
+                                              type="button"
+                                              class="btn btn-secondary"
+                                              data-dismiss="modal">
+                                              Close
+                                            </button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </body>
+                                </html>

@@ -88,5 +88,3 @@ function updateSearchResults(page) {
     }
   }
 }
-
-function orderQueue() {}

@@ -1,0 +1,8 @@
+
+mysql://shi8hsgu5ya1ldsy:vvuzhnfgmp6zd7po@hcm4e9frmbwfez47.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/b7wk8kfrlh299oil
+
+Host 	hcm4e9frmbwfez47.cbetxkdyhwsb.us-east-1.rds.amazonaws.com
+Username 	shi8hsgu5ya1ldsy 	
+Password 	vvuzhnfgmp6zd7po 	
+Port 	3306 	
+Database 	b7wk8kfrlh299oil

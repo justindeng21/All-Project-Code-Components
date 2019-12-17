@@ -12,10 +12,9 @@ CU There is a tool made for CU students and faculty to schedule and organize eve
 
 ## Deployment
 
-There are two ways to deploy the project. The first way is to visit the website: http://cuthere.herokuapp.com/events. The second way is to download the zip file ... and run in any terminal: 
+There are two ways to deploy the project. The first way is to visit the website: http://cuthere.herokuapp.com/events. The second way is to download the zip file "Murphy's Law 12-2-19.zip" and run in the following commands in any terminal (Node.JS must be installed): 
 
 ```
-$ cd ../
-$ npm install
-$ npm start
+$ cd ../Murphy's Law/CUThere
+$ node server.js
 ```
